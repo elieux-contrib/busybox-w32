@@ -3016,6 +3016,8 @@ updatepwd(const char *dir)
 
 	cdcomppath = sstrdup(dir);
 	STARTSTACKSTR(new);
+	if (!absdrive && is_path_sep(*dir))
+		return 0;
 
 	/* prefix new path with current directory, if required */
 	if (other_relpath) {

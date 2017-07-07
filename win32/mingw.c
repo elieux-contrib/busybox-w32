@@ -1041,6 +1041,11 @@ char *mingw_getcwd(char *pointer, int len)
 	char *ret = getcwd(pointer, len);
 	if (!ret)
 		return ret;
+	if (!strncmp(ret, "\\\\?\\", 4)) {
+		for (i = 0; ret[i + 4]; i++)
+			ret[i] = ret[i + 4];
+		ret[i] = '\0';
+	}
 	return bs_to_slash(ret);
 }
 

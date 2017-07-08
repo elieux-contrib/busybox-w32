@@ -559,3 +559,5 @@ char *get_drive_cwd(const char *path, char *buffer, int size);
 void fix_path_case(char *path);
 void seek_sparse(int fd, size_t size);
 int skip_ansi_emulation(int reset);
+
+void initialize_critical_sections(void);
